@@ -32,3 +32,5 @@ $ipAddresses = Get-ChildItem -Path "network_configs" -Recurse -Filter "*.conf" |
 Select-String -Pattern $ipPattern |
 ForEach-Object { $_.Matches.Value } |
 Sort-Object -Unique
+Write-Host "`nUnique IP addresses: $($ipAddresses.Count)"
+$ipAddresses | ForEach-Object { Write-Host $_ }
